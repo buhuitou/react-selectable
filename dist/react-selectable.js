@@ -1059,6 +1059,14 @@ return /******/ (function(modules) { // webpackBootstrap
 					this.context.selectable.unregister(this.props.selectableKey);
 				}
 			}, {
+				key: 'componentWillReceiveProps',
+				value: function componentWillReceiveProps(nextProps) {
+					if (this.props.selectableKey === nextProps.selectableKey) return;
+
+					this.context.selectable.unregister(this.props.selectableKey);
+					this.context.selectable.register(nextProps.selectableKey, _reactDom2.default.findDOMNode(this));
+				}
+			}, {
 				key: 'render',
 				value: function render() {
 					return _react2.default.createElement(WrappedComponent, this.props, this.props.children);
