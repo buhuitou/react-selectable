@@ -13,6 +13,13 @@ const createSelectable = (WrappedComponent) => {
 			this.context.selectable.unregister(this.props.selectableKey);
 		}
 
+		componentWillReceiveProps(nextProps) {
+			if (this.props.selectableKey === nextProps.selectableKey) return;
+
+			this.context.selectable.unregister(this.props.selectableKey);			
+			this.context.selectable.register(nextProps.selectableKey, ReactDOM.findDOMNode(this));
+		}
+
 
 		render () {
 			return React.createElement(
