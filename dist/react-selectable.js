@@ -1059,12 +1059,10 @@ return /******/ (function(modules) { // webpackBootstrap
 					this.context.selectable.unregister(this.props.selectableKey);
 				}
 			}, {
-				key: 'componentWillReceiveProps',
-				value: function componentWillReceiveProps(nextProps) {
-					if (this.props.selectableKey === nextProps.selectableKey) return;
-
-					this.context.selectable.unregister(this.props.selectableKey);
-					this.context.selectable.register(nextProps.selectableKey, _reactDom2.default.findDOMNode(this));
+				key: 'componentDidUpdate',
+				value: function componentDidUpdate(prevProps, prevState) {
+					this.context.selectable.unregister(prevProps.selectableKey);
+					this.context.selectable.register(this.props.selectableKey, _reactDom2.default.findDOMNode(this));
 				}
 			}, {
 				key: 'render',
